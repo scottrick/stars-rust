@@ -1,1 +1,1 @@
-# stars-rust
+# Stars!
