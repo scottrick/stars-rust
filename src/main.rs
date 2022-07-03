@@ -1,22 +1,27 @@
-use druid::widget::{Button, Flex, Label};
-use druid::{AppLauncher, LocalizedString, PlatformError, Widget, WidgetExt, WindowDesc};
+use iced::{Element, Sandbox, Settings, Text};
 
-fn main() -> Result<(), PlatformError> {
-    let main_window = WindowDesc::new(ui_builder());
-    let data = 0_u32;
-    AppLauncher::with_window(main_window)
-        .log_to_console()
-        .launch(data)
+pub fn main() -> iced::Result {
+    Hello::run(Settings::default())
 }
 
-fn ui_builder() -> impl Widget<u32> {
-    // The label text will be computed dynamically based on the current locale and count
-    let text =
-        LocalizedString::new("hello-counter").with_arg("count", |data: &u32, _env| (*data).into());
-    let label = Label::new(text).padding(5.0).center();
-    let button = Button::new("increment")
-        .on_click(|_ctx, data, _env| *data += 1)
-        .padding(5.0);
+struct Hello;
 
-    Flex::column().with_child(label).with_child(button)
+impl Sandbox for Hello {
+    type Message = ();
+
+    fn new() -> Hello {
+        Hello
+    }
+
+    fn title(&self) -> String {
+        String::from("A cool application")
+    }
+
+    fn update(&mut self, _message: Self::Message) {
+        // This application has no interactions
+    }
+
+    fn view(&mut self) -> Element<Self::Message> {
+        Text::new("Hello, world!").into()
+    }
 }
