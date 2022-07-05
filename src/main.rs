@@ -32,19 +32,6 @@ pub mod solar_system;
 // }
 
 pub fn main() -> iced::Result {
-    let mut rng = rand::thread_rng();
-    for i in 1..11 {
-        let new_x: f32 = rng.gen();
-        let new_y: f32 = rng.gen();
-        let new_planet = Planet {
-            pos_x: new_x * 256.0,
-            pos_y: new_y * 256.0,
-            name: format!("planet{i}"),
-        };
-
-        println!("{new_planet:?}");
-    }
-
     Galaxy::run(Settings {
         antialiasing: true,
         ..Settings::default()
