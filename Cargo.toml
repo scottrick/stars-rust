@@ -8,4 +8,6 @@ edition = "2021"
 [dependencies]
 # druid = { git = "https://github.com/linebender/druid.git" }
 iced = { version = "0.4", features = ["canvas", "tokio", "debug", "glow"]}
+# iced = { git = "https://github.com/iced-rs/iced", features = ["canvas", "tokio", "debug", "glow"]}
 rand = "0.8.5"
+specs = { version = "0.18.0", features = ["specs-derive"] }
