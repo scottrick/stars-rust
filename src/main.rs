@@ -1,5 +1,7 @@
 use components::{galaxy::Galaxy, named::Named, position::Position};
+use iced::{Settings, Application};
 use rand::Rng;
+use space::Space;
 use specs::{Builder, DispatcherBuilder, RunNow, World, WorldExt};
 use systems::{hello::Hello, movement::Movement};
 
@@ -7,6 +9,7 @@ pub mod components;
 pub mod planet;
 pub mod planets;
 pub mod solar_system;
+pub mod space;
 pub mod systems;
 
 // struct Hello;
@@ -31,8 +34,8 @@ pub mod systems;
 //     }
 // }
 
-// pub fn main() -> iced::Result {
-pub fn main() {
+pub fn main() -> iced::Result {
+// pub fn main() {
     let mut rng = rand::thread_rng();
 
     let mut world = World::new();
@@ -89,4 +92,6 @@ pub fn main() {
     //     antialiasing: true,
     //     ..Settings::default()
     // })
+
+    Space::run(Settings::default())
 }
